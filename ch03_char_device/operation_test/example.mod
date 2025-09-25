@@ -1,0 +1,2 @@
+/home/leeyan/linux-device-drivers-study/ch03_char_device/operation_test/example.o
+
