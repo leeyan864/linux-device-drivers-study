@@ -20,7 +20,6 @@ int __init my_init(void){
     void *arguments2 = NULL;
     int stuff_ok = 0;
 
-
     item1 = allocate_thing(arguments);
     item2 = allocate_thing2(arguments2);
     if(!item1 || !item2){
