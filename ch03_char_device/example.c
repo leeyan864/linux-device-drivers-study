@@ -28,8 +28,19 @@ static int my_release(struct inode *inode, struct file *file){
 
 static ssize_t my_read(struct file *file, char __user *buf,
 						size_t count, loff_t *ppos){
-	pr_info("Device read\n");
-	return 0;
+	const char *msg = "Hello from kernel\n";
+	size_t len = strlen(msg);
+
+	if(*ppos >=  len){
+		return 0;
+	}
+
+	if(copy_to_user(buf, msg, len)){
+		return -EFAULT;
+	}
+	*ppos += len;
+	pr_info("Device read %s\n", msg);
+	return len;
 }
 
 static ssize_t my_write(struct file *file, const char __user *buf,
